@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">🚀</div>
+        <h1>Job Application Tracker</h1>
+    </header>
+
+    <main>
+        <section id="stats-section">
+            <h2>Application Statistics</h2>
+            <canvas id="applicationStatsChart"></canvas>
+        </section>
+
+        <section id="positions-section">
+            <h2>Positions</h2>
+            <p>Move your applications along the status pipeline</p>
+
+            <div id="view-options">
+                <button class="active" data-grouping="none">All applications</button>
+                <button data-grouping="company">Group by Company</button>
+                <button data-grouping="stage">Group by Stage</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th data-column="date">Date <i class="fas fa-sort"></i></th>
+                        <th data-column="stage">Stage <i class="fas fa-sort"></i></th>
+                        <th data-column="company">Company <i class="fas fa-sort"></i></th>
+                        <th>Position</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="applications-body">
+                </tbody>
+            </table>
+
+            <div id="counts">
+                <span>VALUES: <span id="values-count">0</span></span>
+                <span>IN PROGRESS: <span id="in-progress-count">0/0</span></span>
+                <span>COUNT: <span id="total-count">0</span></span>
+                <span>NOT EMPTY: <span id="not-empty-count">0</span></span>
+            </div>
+        </section>
+
+        <div id="motivational-quote"></div>
+    </main>
+
+    <div id="add-application-modal" class="modal">
+        <div class="modal-content">
+            <h2>Add New Application</h2>
+            <form id="add-application-form">
+                <input type="date" id="date" required>
+                <select id="stage" required>
+                    <option value="To apply">To apply</option>
+                    <option value="Applied">Applied</option>
+                    <option value="Interview">Interview</option>
+                    <option value="Offer">Offer</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+                <input type="text" id="company" placeholder="Company" required>
+                <input type="text" id="position" placeholder="Position" required>
+                <button type="submit">Add Application</button>
+            </form>
+        </div>
+    </div>
+
+    <button id="add-application-btn">+ Add Application</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
